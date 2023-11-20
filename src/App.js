@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
-
+import appfirebase from '../src/Credenciales';
+import {getAuth, onAuthStateChanged} from 'firebase/auth';
+import Login from '../src/Componentes/Login';
+import Home from '../src/Componentes/Home';
+const auth = getAuth(appfirebase)
 function App() {
+  const [usuario, setUsuario]=useState(null)
+  onAuthStateChanged(auth, (usuariofirebase) => {
+    if (usuariofirebase){
+      setUsuario(usuariofirebase)
+    }
+    else
+    {
+      setUsuario(null)
+    }
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {usuario ? <Home correoUsuario = {usuario.email}/> : <Login/>}
     </div>
   );
 }
