@@ -10,14 +10,21 @@ function ToDo() {
   function addTaskHandler(taskName, taskDescription, taskDate) {
     setTasksList((prevTasksList) => {
       return [...prevTasksList, { title: taskName, description: taskDescription, date: taskDate,
-      id: Math.random().toString() }];
+      id: Math.random().toString(), completed: false }];
     });
   };
+
+  const completeATask = (index) => {
+    let aux = [...tasksList];
+    aux[index].completed = true;
+    setTasksList(aux);
+    console.log(tasksList);
+  }
 
   return (
     <>
       <AddTask onAddTask={addTaskHandler} />
-      <TasksList tasks={tasksList} />
+      <TasksList tasks={tasksList} completeATask ={completeATask} />
     </>
   );
 };
