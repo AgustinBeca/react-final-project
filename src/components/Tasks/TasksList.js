@@ -7,8 +7,8 @@ import Button from "../UI/Button";
 
 function TasksList(props) {
 
-  function completeTaskHandler(index) {
-    props.completeATask(index)
+  function changeTaskStatusHandler(index) {
+    props.changeStatus(index)
   };
 
   return (
@@ -19,8 +19,17 @@ function TasksList(props) {
             <h3>{task.title}</h3>
             <p>{task.description}</p>
             <p className={classes.date}>{task.date}</p>
-            {!task.completed && <Button onClick={() => completeTaskHandler(index)}>Completar</Button>}
-            {task.completed && <p className={classes.status}>Completada</p>}
+            {!task.completed ? (
+              <>
+                <p className={classes.pending}>Pendiente</p>
+                <Button onClick={() => changeTaskStatusHandler(index)}>Completar</Button>
+              </>
+            ) : (
+              <>
+                <p className={classes.completed}>Completada</p>
+                <Button onClick={() => changeTaskStatusHandler(index)}>Pendiente</Button>
+              </>
+            )}
           </li>
         ))}
       </ul>

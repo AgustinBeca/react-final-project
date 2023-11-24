@@ -20,10 +20,16 @@
 }
 
 .date {
-  font-weight: bold;
-  color: #FFC90A;
+  font-weight: lighter;
+  color: #6392FF;
 }
 
-.status {
-  color: darkgrey;
+.pending {
+  color: #FFC90A;
+
+}
+
+.completed {
+  font-weight: bold;
+  color: #6AC12C;
 }

@@ -46,7 +46,7 @@ function AddTask(props) {
 
   function formatDate(date) {
     const enteredDate = new Date(date);
-    const day = enteredDate.getDate();
+    const day = enteredDate.getDate() + 1;
     const month = enteredDate.getMonth() + 1;
     const year = enteredDate.getFullYear();
 

@@ -14,9 +14,9 @@ function ToDo() {
     });
   };
 
-  const completeATask = (index) => {
+  const changeStatus = (index) => {
     let aux = [...tasksList];
-    aux[index].completed = true;
+    aux[index].completed = !aux[index].completed;
     setTasksList(aux);
     console.log(tasksList);
   }
@@ -24,7 +24,7 @@ function ToDo() {
   return (
     <>
       <AddTask onAddTask={addTaskHandler} />
-      <TasksList tasks={tasksList} completeATask ={completeATask} />
+      <TasksList tasks={tasksList} changeStatus ={changeStatus} />
     </>
   );
 };
