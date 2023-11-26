@@ -4,7 +4,11 @@ import appfirebase from '../src/Credenciales';
 import {getAuth, onAuthStateChanged} from 'firebase/auth';
 import Login from '../src/Componentes/Login';
 import Home from '../src/Componentes/Home';
+import React from "react";
+import ToDo from "./pages/ToDo";
+
 const auth = getAuth(appfirebase)
+
 function App() {
   const [usuario, setUsuario]=useState(null)
   onAuthStateChanged(auth, (usuariofirebase) => {
@@ -17,9 +21,10 @@ function App() {
     }
   })
   return (
-    <div>
+    <>
       {usuario ? <Home correoUsuario = {usuario.email}/> : <Login/>}
-    </div>
+      <ToDo />
+    </>
   );
 }
 
