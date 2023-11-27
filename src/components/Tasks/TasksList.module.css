@@ -1,0 +1,29 @@
+.tasks {
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 40rem;
+}
+
+.tasks ul {
+  list-style: none;
+  padding: 1rem;
+}
+
+.tasks li {
+  border: 1px solid #ccc;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+.tasks li h3 {
+  color: #1e90ff;
+}
+
+.date {
+  font-weight: bold;
+  color: #FFC90A;
+}
+
+.status {
+  color: darkgrey;
+}
