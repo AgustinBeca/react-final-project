@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import imagen from "../images/Lovepik_com-611647791-Mobile phone product login interface.png";
-import imagenperfil from "../images/profile.png";
-import appfirebase from "../Credenciales";
+import imagen from "../../images/Lovepik_com-611647791-Mobile phone product login interface.png";
+import imagenperfil from "../../images/profile.png";
+import appfirebase from "../../Credenciales";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const auth = getAuth(appfirebase);
