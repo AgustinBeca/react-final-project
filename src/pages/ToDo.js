@@ -9,12 +9,14 @@ function ToDo() {
 
   function addTaskHandler(taskName, taskDescription, taskDate) {
     setTasksList((prevTasksList) => {
-      return [...prevTasksList, { title: taskName, description: taskDescription, date: taskDate,
-      id: Math.random().toString(), completed: false }];
+      return [...prevTasksList, {
+        title: taskName, description: taskDescription, date: taskDate,
+        id: Math.random().toString(), completed: false
+      }];
     });
   };
 
-  const changeStatus = (index) => {
+  function changeStatus(index) {
     let aux = [...tasksList];
     aux[index].completed = !aux[index].completed;
     setTasksList(aux);
@@ -24,7 +26,7 @@ function ToDo() {
   return (
     <>
       <AddTask onAddTask={addTaskHandler} />
-      <TasksList tasks={tasksList} changeStatus ={changeStatus} />
+      <TasksList tasks={tasksList} changeStatus={changeStatus} />
     </>
   );
 };

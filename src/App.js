@@ -2,8 +2,8 @@ import { useState } from 'react';
 import './App.css';
 import appfirebase from '../src/Credenciales';
 import {getAuth, onAuthStateChanged} from 'firebase/auth';
-import Login from '../src/Componentes/Login';
-import Home from '../src/Componentes/Home';
+import Login from '../src/components/Login';
+import Home from '../src/components/Home';
 import React from "react";
 import ToDo from "./pages/ToDo";
 

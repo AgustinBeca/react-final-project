@@ -14,12 +14,12 @@ Aplicación de Lista de Tareas con Firebase y React
 
 ## Colors
 
-Primary Color: `#1e90ff`
+- Primary Color: `#1e90ff`
 
-Success Color: `#6AC12C`
+- Success Color: `#6AC12C`
 
-Info Color: `#6392FF`
+- Info Color: `#6392FF`
 
-Warning Color: `#FFC90A`
+- Warning Color: `#FFC90A`
 
-Danger Color: `#FF5630`
+- Danger Color: `#FF5630`

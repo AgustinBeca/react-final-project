@@ -33,3 +33,22 @@
   font-weight: bold;
   color: #6AC12C;
 }
+
+.delete {
+  font: inherit;
+  border: 1px solid #FF5630;
+  background: #FF5630;
+  color: white;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+}
+
+.delete:hover,
+.delete:active {
+  background: #FF8B63;
+  border-color: #FF8B63;
+}
+
+.button:focus {
+  outline: none;
+}

@@ -30,6 +30,7 @@ function TasksList(props) {
                 <Button onClick={() => changeTaskStatusHandler(index)}>Pendiente</Button>
               </>
             )}
+            <button className={classes.delete}>Eliminar Tarea</button>
           </li>
         ))}
       </ul>
