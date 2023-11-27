@@ -16,3 +16,22 @@
 .button:focus {
   outline: none;
 }
+
+.dangerButton {
+  font: inherit;
+  border: 1px solid #FF5630;
+  background: #FF5630;
+  color: white;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+}
+
+.dangerButton:hover,
+.dangerButton:active {
+  background: #FF8B63;
+  border-color: #FF8B63;
+}
+
+.dangerButton:focus {
+  outline: none;
+}

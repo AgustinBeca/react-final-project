@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 
 import classes from "./TasksList.module.css";
 
 import Card from "../UI/Card";
 import Button from "../UI/Button";
+import ConfirmModal from "../UI/WarningModal";
 
 function TasksList(props) {
 
+  const [warning, setWarning] = useState('');
+
   function changeTaskStatusHandler(index) {
-    props.changeStatus(index)
+    props.changeStatus(index);
   };
+
+  function deleteTaskHandler(index) {
+    setWarning({
+      title: 'Seguro que quiere eliminar esta tarea?',
+      message: 'Esta Tarea se eliminará de forma permanente',
+      index: index
+    });
+  };
+
+  function warningHandler() {
+    props.deleteTask(warning.index);
+    setWarning(null);
+  };
+
+  function cancelWarningHandler() {
+    setWarning(null);
+  }
 
   return (
     <Card className={classes.tasks}>
@@ -30,7 +50,11 @@ function TasksList(props) {
                 <Button onClick={() => changeTaskStatusHandler(index)}>Pendiente</Button>
               </>
             )}
-            <button className={classes.delete}>Eliminar Tarea</button>
+            <button className={classes.delete} onClick={() => deleteTaskHandler(index)}>
+              Eliminar Tarea
+            </button>
+            {warning && <ConfirmModal title={warning.title} message={warning.message}
+              onConfirm={warningHandler} onCancel={cancelWarningHandler} />}
           </li>
         ))}
       </ul>
