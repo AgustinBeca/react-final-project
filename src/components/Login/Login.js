@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import imagen from "../Imagenes/Lovepik_com-611647791-Mobile phone product login interface.png";
-import imagenperfil from "../Imagenes/profile.png";
-import appfirebase from "../Credenciales";
+import imagen from "../../Imagenes/Lovepik_com-611647791-Mobile phone product login interface.png";
+import imagenperfil from "../../Imagenes/profile.png";
+import appfirebase from "../../Credenciales";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
@@ -22,7 +22,6 @@ const Login = () => {
                 await createUserWithEmailAndPassword(auth, htmlCorreo, htmlContraseña);
                 var userUid = auth.currentUser.uid;
                 const db = getFirestore(appfirebase);
-                console.log(userUid);
 
                 await setDoc(doc(db, "usuarios", userUid), {
                     correo: htmlCorreo,
@@ -30,7 +29,6 @@ const Login = () => {
                 });
                 
             } catch (error) {
-                console.log(error);
                 var errorCode = error.code;
                 console.log(`ERROR: ` + errorCode)
                 if (errorCode === 'auth/weak-password') return alert("La contraseña debe tener más de 8 caracteres");

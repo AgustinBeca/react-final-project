@@ -2,9 +2,10 @@ import { useState } from "react";
 import "./App.css";
 import appfirebase from "../src/Credenciales";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import Login from "../src/Componentes/Login";
-import Home from "../src/Componentes/Home";
+import Login from "./components/Login/Login";
+import Home from "./pages/Home";
 import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 const auth = getAuth(appfirebase);
 
@@ -19,7 +20,23 @@ function App() {
     });
     return (
         <>
-            {usuario ? <Home correoUsuario={usuario.email} /> : <Login />}
+            <Routes>
+                <Route
+                    path="/"
+                    element={usuario ? <Navigate to="/tareas" /> : <Login />}
+                ></Route>
+                <Route
+                    exact
+                    path="/tareas"
+                    element={
+                        usuario ? (
+                            <Home correoUsuario={usuario.email}></Home>
+                        ) : (
+                            <Navigate to="/" />
+                        )
+                    }
+                ></Route>
+            </Routes>
         </>
     );
 }
