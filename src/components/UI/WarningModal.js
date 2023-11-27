@@ -5,7 +5,7 @@ import classes from "./ErrorModal.module.css";
 import Card from "./Card";
 import Button from "./Button";
 
-function ConfirmModal(props){
+function WarningModal(props){
   return (
     <div>
       <div className={classes.backdrop} onClick={props.onCancel} />
@@ -17,7 +17,7 @@ function ConfirmModal(props){
         <p>{props.message}</p>
       </div>
       <footer className={classes.actions}>
-        <Button onClick={props.onConfirm}>Okay</Button>
+        <Button danger={true} onClick={props.onConfirm}>Okay</Button>
         <Button onClick={props.onCancel}>Cancelar</Button>
       </footer>
     </Card>
@@ -25,4 +25,4 @@ function ConfirmModal(props){
   )
 };
 
-export default ConfirmModal;
+export default WarningModal;

@@ -16,8 +16,8 @@ function TasksList(props) {
 
   function deleteTaskHandler(index) {
     setWarning({
-      title: 'Seguro que quiere eliminar esta tarea?',
-      message: 'Esta Tarea se eliminará de forma permanente',
+      title: '¿Seguro que quiere eliminar esta tarea?',
+      message: 'La Tarea se eliminará de forma permanente',
       index: index
     });
   };
@@ -36,23 +36,22 @@ function TasksList(props) {
       <ul>
         {props.tasks.map((task, index) => (
           <li key={task.id}>
-            <h3>{task.title}</h3>
+            <h3 className={classes.title}>{task.title}</h3>
             <p>{task.description}</p>
             <p className={classes.date}>{task.date}</p>
             {!task.completed ? (
-              <>
-                <p className={classes.pending}>Pendiente</p>
-                <Button onClick={() => changeTaskStatusHandler(index)}>Completar</Button>
-              </>
+              <p className={classes.pending}>Pendiente</p>
             ) : (
-              <>
-                <p className={classes.completed}>Completada</p>
-                <Button onClick={() => changeTaskStatusHandler(index)}>Pendiente</Button>
-              </>
+              <p className={classes.completed}>Completada</p>
             )}
-            <button className={classes.delete} onClick={() => deleteTaskHandler(index)}>
-              Eliminar Tarea
-            </button>
+            <footer className={classes.actions}>
+              <Button onClick={() => changeTaskStatusHandler(index)}>
+                {!task.completed ? "Completar" : "Pendiente"}
+              </Button>
+              <Button danger={true} onClick={() => deleteTaskHandler(index)}>
+                Eliminar Tarea
+              </Button>
+            </footer>
             {warning && <ConfirmModal title={warning.title} message={warning.message}
               onConfirm={warningHandler} onCancel={cancelWarningHandler} />}
           </li>
