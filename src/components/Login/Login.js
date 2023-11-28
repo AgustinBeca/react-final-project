@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import imagen from "../../Imagenes/Lovepik_com-611647791-Mobile phone product login interface.png";
-import imagenperfil from "../../Imagenes/profile.png";
+import imagen from "../../images/Lovepik_com-611647791-Mobile phone product login interface.png";
+import imagenperfil from "../../images/profile.png";
 import appfirebase from "../../Credenciales";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";

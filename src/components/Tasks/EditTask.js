@@ -52,13 +52,12 @@ function EditTask(props) {
     setEnteredTaskDate(event.target.value);
   };
 
-  function errorHandler(){
+  function errorHandler() {
     setError(null);
   };
 
   return (
     <>
-      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
       <div className={classes.backdrop} onClick={props.onCancel} />
       <Card className={classes.modal}>
         <header className={classes.header}>
@@ -78,8 +77,8 @@ function EditTask(props) {
             </footer>
           </form>
         </div>
-
       </Card>
+      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
     </>
   )
 };
