@@ -16,7 +16,7 @@ function ToDo() {
     });
   };
 
-  function changeStatus(index) {
+  function changeStatusHandler(index) {
     let aux = [...tasksList];
     aux[index].completed = !aux[index].completed;
     setTasksList(aux);
@@ -24,7 +24,7 @@ function ToDo() {
     console.log(tasksList);
   };
 
-  function deleteTask(index) {
+  function deleteTaskHandler(index) {
     let aux = [...tasksList];
     aux.splice(index, 1);
     setTasksList(aux);
@@ -32,10 +32,27 @@ function ToDo() {
     console.log(tasksList);
   };
 
+  function editTaskHandler(index, taskName, taskDescription, taskDate, taskId, taskStatus) {
+    let aux = [...tasksList];
+    aux.splice(index, 1);
+
+    setTasksList(aux);
+
+    setTasksList((prevTasksList) => {
+      return [...prevTasksList, {
+        title: taskName, description: taskDescription, date: taskDate,
+        id: taskId, completed: taskStatus
+      }];
+    });
+
+    console.log(tasksList);
+  };
+
   return (
     <>
       <AddTask onAddTask={addTaskHandler} />
-      <TasksList tasks={tasksList} changeStatus={changeStatus} deleteTask={deleteTask} />
+      <TasksList tasks={tasksList} changeStatus={changeStatusHandler} deleteTask={deleteTaskHandler}
+        editTask={editTaskHandler} />
     </>
   );
 };

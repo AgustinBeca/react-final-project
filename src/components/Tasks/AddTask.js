@@ -11,7 +11,7 @@ function AddTask(props) {
   const [enteredTaskDescription, setEnteredTaskDescription] = useState('');
   const [enteredTaskDate, setEnteredTaskDate] = useState('');
 
-  const [error, setError] = useState('');
+  const [error, setError] = useState();
 
   function addTaskHandler(event) {
     event.preventDefault();
@@ -36,22 +36,22 @@ function AddTask(props) {
       return;
     }
 
-    const formatedDate = formatDate(enteredTaskDate);
+    //const formatedDate = formatDate(enteredTaskDate);
 
-    props.onAddTask(enteredTaskName, enteredTaskDescription, formatedDate);
+    props.onAddTask(enteredTaskName, enteredTaskDescription, enteredTaskDate);
     setEnteredTaskName('');
     setEnteredTaskDescription('');
     setEnteredTaskDate('');
   };
 
-  function formatDate(date) {
+  /* function formatDate(date) {
     const enteredDate = new Date(date);
     const day = enteredDate.getDate() + 1;
     const month = enteredDate.getMonth() + 1;
     const year = enteredDate.getFullYear();
 
     return `${day}/${month}/${year}`;
-  };
+  }; */
 
   function taskNameHandler(event) {
     setEnteredTaskName(event.target.value);

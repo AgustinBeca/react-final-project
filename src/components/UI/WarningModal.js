@@ -17,7 +17,7 @@ function WarningModal(props){
         <p>{props.message}</p>
       </div>
       <footer className={classes.actions}>
-        <Button danger={true} onClick={props.onConfirm}>Okay</Button>
+        <Button color={"danger"} onClick={props.onConfirm}>Okay</Button>
         <Button onClick={props.onCancel}>Cancelar</Button>
       </footer>
     </Card>

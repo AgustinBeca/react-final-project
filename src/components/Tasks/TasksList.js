@@ -4,11 +4,13 @@ import classes from "./TasksList.module.css";
 
 import Card from "../UI/Card";
 import Button from "../UI/Button";
-import ConfirmModal from "../UI/WarningModal";
+import WarningModal from "../UI/WarningModal";
+import EditTask from "./EditTask";
 
 function TasksList(props) {
 
-  const [warning, setWarning] = useState('');
+  const [warning, setWarning] = useState();
+  const [editingTask, setEditingTask] = useState();
 
   function changeTaskStatusHandler(index) {
     props.changeStatus(index);
@@ -29,7 +31,27 @@ function TasksList(props) {
 
   function cancelWarningHandler() {
     setWarning(null);
-  }
+  };
+
+  function editTaskHandler(index, taskName, taskDescription, taskDate, taskId, taskStatus) {
+    setEditingTask({
+      index: index,
+      name: taskName,
+      description: taskDescription,
+      date: taskDate,
+      id: taskId,
+      completed: taskStatus
+    });
+  };
+
+  function editViewHandler(taskName, taskDescription, taskDate, taskIndex, taskId, taskStatus) {
+    props.editTask(taskIndex, taskName, taskDescription, taskDate, taskId, taskStatus);
+    setEditingTask(null);
+  };
+
+  function cancelEditViewHandler() {
+    setEditingTask(null);
+  };
 
   return (
     <Card className={classes.tasks}>
@@ -45,15 +67,34 @@ function TasksList(props) {
               <p className={classes.completed}>Completada</p>
             )}
             <footer className={classes.actions}>
-              <Button onClick={() => changeTaskStatusHandler(index)}>
-                {!task.completed ? "Completar" : "Pendiente"}
+              <Button color={!task.completed ? "success" : "warning"}
+                onClick={() => changeTaskStatusHandler(index)}>
+                {!task.completed ? "Completar Tarea" : " Tarea Pendiente"}
               </Button>
-              <Button danger={true} onClick={() => deleteTaskHandler(index)}>
+              <Button color={"danger"} onClick={() => deleteTaskHandler(index)}>
                 Eliminar Tarea
               </Button>
+              <Button onClick={() => editTaskHandler(index, task.title, task.description, task.date,
+                task.id, task.completed)}>Editar Tarea</Button>
             </footer>
-            {warning && <ConfirmModal title={warning.title} message={warning.message}
-              onConfirm={warningHandler} onCancel={cancelWarningHandler} />}
+            {warning &&
+              <WarningModal
+                title={warning.title}
+                message={warning.message}
+                onConfirm={warningHandler}
+                onCancel={cancelWarningHandler}
+              />}
+            {editingTask &&
+              <EditTask
+                name={editingTask.name}
+                description={editingTask.description}
+                date={editingTask.date}
+                index={editingTask.index}
+                id={editingTask.id}
+                status={editingTask.completed}
+                onConfirm={editViewHandler}
+                onCancel={cancelEditViewHandler}
+              />}
           </li>
         ))}
       </ul>
