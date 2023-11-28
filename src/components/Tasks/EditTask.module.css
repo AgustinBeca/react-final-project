@@ -10,7 +10,7 @@
 
 .modal {
   position: fixed;
-  top: 30vh;
+  top: 20vh;
   left: 10%;
   width: 80%;
   z-index: 100;
@@ -29,6 +29,26 @@
 
 .content {
   padding: 1rem;
+}
+
+.modal label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.modal input {
+  font: inherit;
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 0.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal input:focus {
+  outline: none;
+  border-color: #1e90ff;
 }
 
 .actions {
