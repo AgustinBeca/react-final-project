@@ -12,15 +12,15 @@ function TasksList(props) {
   const [warning, setWarning] = useState();
   const [editingTask, setEditingTask] = useState();
 
-  function changeTaskStatusHandler(index) {
-    props.changeStatus(index);
+  function changeTaskStatusHandler(id, status) {
+    props.changeStatus(id, status);
   };
 
-  function deleteTaskHandler(index) {
+  function deleteTaskHandler(id) {
     setWarning({
       title: '¿Seguro que quiere eliminar esta tarea?',
       message: 'La Tarea se eliminará de forma permanente',
-      index: index
+      index: id
     });
   };
 
@@ -33,19 +33,17 @@ function TasksList(props) {
     setWarning(null);
   };
 
-  function editTaskHandler(index, taskName, taskDescription, taskDate, taskId, taskStatus) {
+  function editTaskHandler(taskName, taskDescription, taskDate, taskId) {
     setEditingTask({
-      index: index,
       name: taskName,
       description: taskDescription,
       date: taskDate,
       id: taskId,
-      completed: taskStatus
     });
   };
 
-  function editViewHandler(taskName, taskDescription, taskDate, taskIndex, taskId, taskStatus) {
-    props.editTask(taskIndex, taskName, taskDescription, taskDate, taskId, taskStatus);
+  function editViewHandler(taskName, taskDescription, taskDate, taskId) {
+    props.editTask(taskName, taskDescription, taskDate, taskId);
     setEditingTask(null);
   };
 
@@ -60,7 +58,7 @@ function TasksList(props) {
           <li key={task.id}>
             <h3 className={classes.title}>{task.title}</h3>
             <p>{task.description}</p>
-            <p className={classes.date}>{task.date}</p>
+            <p className={classes.date}>{task.due_date}</p>
             {!task.completed ? (
               <p className={classes.pending}>Pendiente</p>
             ) : (
@@ -68,14 +66,14 @@ function TasksList(props) {
             )}
             <footer className={classes.actions}>
               <Button color={!task.completed ? "success" : "warning"}
-                onClick={() => changeTaskStatusHandler(index)}>
+                onClick={() => changeTaskStatusHandler(task.id, task.completed)}>
                 {!task.completed ? "Completar Tarea" : " Tarea Pendiente"}
               </Button>
-              <Button color={"danger"} onClick={() => deleteTaskHandler(index)}>
+              <Button color={"danger"} onClick={() => deleteTaskHandler(task.id)}>
                 Eliminar Tarea
               </Button>
-              <Button onClick={() => editTaskHandler(index, task.title, task.description, task.date,
-                task.id, task.completed)}>Editar Tarea</Button>
+              <Button onClick={() => editTaskHandler(task.title, task.description, task.due_date,
+                task.id)}>Editar Tarea</Button>
             </footer>
             {warning &&
               <WarningModal
@@ -89,9 +87,7 @@ function TasksList(props) {
                 name={editingTask.name}
                 description={editingTask.description}
                 date={editingTask.date}
-                index={editingTask.index}
                 id={editingTask.id}
-                status={editingTask.completed}
                 onConfirm={editViewHandler}
                 onCancel={cancelEditViewHandler}
               />}
