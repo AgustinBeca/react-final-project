@@ -1,0 +1,20 @@
+@import '../../style/variables.css';
+
+.header {
+  display: flex;
+  background-color: var(--light-primary-color);
+  padding: 10px;
+}
+
+.column {
+  padding: 1%;
+}
+
+.right {
+  flex-grow: 2;
+}
+
+.title {
+  margin-top: 1%;
+  color: white;
+}

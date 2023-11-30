@@ -4,7 +4,7 @@ import classes from "./AddTask.module.css";
 
 import Card from "../UI/Card";
 import Button from "../UI/Button";
-import ErrorModal from "../UI/ErrorModal";
+import Alert from "../UI/Alert";
 
 function AddTask(props) {
   const [enteredTaskName, setEnteredTaskName] = useState('');
@@ -36,22 +36,11 @@ function AddTask(props) {
       return;
     }
 
-    //const formatedDate = formatDate(enteredTaskDate);
-
     props.onAddTask(enteredTaskName, enteredTaskDescription, enteredTaskDate);
     setEnteredTaskName('');
     setEnteredTaskDescription('');
     setEnteredTaskDate('');
   };
-
-  /* function formatDate(date) {
-    const enteredDate = new Date(date);
-    const day = enteredDate.getDate() + 1;
-    const month = enteredDate.getMonth() + 1;
-    const year = enteredDate.getFullYear();
-
-    return `${day}/${month}/${year}`;
-  }; */
 
   function taskNameHandler(event) {
     setEnteredTaskName(event.target.value);
@@ -71,7 +60,7 @@ function AddTask(props) {
 
   return (
     <>
-      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
+      {error && <Alert title={error.title} message={error.message} onCancel={errorHandler} />}
       <Card className={classes.input}>
         <form onSubmit={addTaskHandler}>
           <label htmlFor="taskName">Título de su Tarea</label>
@@ -80,7 +69,9 @@ function AddTask(props) {
           <input id="taskDescription" type="text" value={enteredTaskDescription} onChange={taskDescriptionHandler}></input>
           <label htmlFor="taskDate">Fecha Vencimiento de su Tarea</label>
           <input id="taskDate" type="date" value={enteredTaskDate} onChange={taskDateHandler}></input>
-          <Button type="submit">Añadir Tarea</Button>
+          <footer className={classes.actions}>
+            <Button type="submit">Añadir Tarea</Button>
+          </footer>
         </form>
       </Card>
     </>
