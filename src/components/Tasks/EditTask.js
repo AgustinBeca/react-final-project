@@ -37,7 +37,7 @@ function EditTask(props) {
       return;
     }
 
-    props.onConfirm(enteredTaskName, enteredTaskDescription, enteredTaskDate, props.index, props.id, props.status);
+    props.onConfirm(enteredTaskName, enteredTaskDescription, enteredTaskDate, props.id);
   };
 
   function taskNameHandler(event) {

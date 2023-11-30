@@ -12,15 +12,15 @@ function TasksList(props) {
   const [warning, setWarning] = useState();
   const [editingTask, setEditingTask] = useState();
 
-  function changeTaskStatusHandler(index) {
-    props.changeStatus(index);
+  function changeTaskStatusHandler(id, status) {
+    props.changeStatus(id, status);
   };
 
-  function deleteTaskHandler(index) {
+  function deleteTaskHandler(id) {
     setWarning({
       title: '¿Seguro que quiere eliminar esta tarea?',
       message: 'La Tarea se eliminará de forma permanente',
-      index: index
+      index: id
     });
   };
 
@@ -33,19 +33,17 @@ function TasksList(props) {
     setWarning(null);
   };
 
-  function editTaskHandler(index, taskName, taskDescription, taskDate, taskId, taskStatus) {
+  function editTaskHandler(taskName, taskDescription, taskDate, taskId) {
     setEditingTask({
-      index: index,
       name: taskName,
       description: taskDescription,
-      date: taskDate,
+      due_date: taskDate,
       id: taskId,
-      completed: taskStatus
     });
   };
 
-  function editViewHandler(taskName, taskDescription, taskDate, taskIndex, taskId, taskStatus) {
-    props.editTask(taskIndex, taskName, taskDescription, taskDate, taskId, taskStatus);
+  function editViewHandler(taskName, taskDescription, taskDate, taskId) {
+    props.editTask(taskName, taskDescription, taskDate, taskId);
     setEditingTask(null);
   };
 
@@ -69,11 +67,11 @@ function TasksList(props) {
             </div>
             <div className={task.completed ? classes.details : `${classes.details} ${classes.pending}`}>
               <p className={classes.description}>{task.description}</p>
-              <p className={classes.date}>{task.date}</p>
+              <p className={classes.date}>{task.due_date}</p>
             </div>
             <footer className={classes.actions}>
-              <Button color={"info"} onClick={() => editTaskHandler(index, task.title, task.description, task.date,
-                task.id, task.completed)}>Editar Tarea</Button>
+              <Button color={"info"} onClick={() => editTaskHandler(task.title, task.description, task.due_date,
+                task.id)}>Editar Tarea</Button>
               <Button color={"danger"} onClick={() => deleteTaskHandler(index)}>
                 Eliminar Tarea
               </Button>
@@ -90,10 +88,8 @@ function TasksList(props) {
               <EditTask
                 name={editingTask.name}
                 description={editingTask.description}
-                date={editingTask.date}
-                index={editingTask.index}
+                date={editingTask.due_date}
                 id={editingTask.id}
-                status={editingTask.completed}
                 onConfirm={editViewHandler}
                 onCancel={cancelEditViewHandler}
               />}
