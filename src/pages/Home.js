@@ -1,21 +1,14 @@
 import React from "react";
-import appfirebase from "../Credenciales";
-import { getAuth, signOut } from "firebase/auth";
+
+import Header from "../components/Header/Header";
 import ToDo from "./ToDo";
 
-const auth = getAuth(appfirebase);
-
-const Home = ({ correoUsuario }) => {
+const Home = (props) => {
   return (
-    <div>
-      <h2 className="text-center">
-        Bienvenido Usuario {correoUsuario}{" "}
-        <button className="botonsalir" onClick={() => signOut(auth)}>
-          LogOut
-        </button>
-      </h2>
-      <ToDo></ToDo>
-    </div>
+    <>
+      <Header userMail={props.correoUsuario} />
+      <ToDo />
+    </>
   );
 };
 export default Home;

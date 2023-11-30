@@ -7,13 +7,15 @@ function Button(props) {
   let cssClass = '';
 
   if (props.color === "danger") {
-    cssClass = classes.dangerButton;
+    cssClass = `${classes.button} ${classes.danger}`;
   } else if (props.color === "warning") {
-    cssClass = classes.warningButton;
+    cssClass = `${classes.button} ${classes.warning}`;
   } else if (props.color === "success") {
-    cssClass = classes.successButton;
+    cssClass = `${classes.button} ${classes.success}`;
+  } else if (props.color === "info") {
+    cssClass = `${classes.button} ${classes.info}`;
   } else {
-    cssClass = classes.button;
+    cssClass = `${classes.button} ${classes.primary}`;
   }
 
   return (
