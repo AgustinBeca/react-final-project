@@ -28,7 +28,7 @@ function ToDo() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const querySnapshot = await getDocs(q);
+            const querySnapshot = await getDocs(q);            
             setTasksList(
                 querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
             );

@@ -37,7 +37,7 @@ function TasksList(props) {
     setEditingTask({
       name: taskName,
       description: taskDescription,
-      date: taskDate,
+      due_date: taskDate,
       id: taskId,
     });
   };
@@ -67,11 +67,11 @@ function TasksList(props) {
             </div>
             <div className={task.completed ? classes.details : `${classes.details} ${classes.pending}`}>
               <p className={classes.description}>{task.description}</p>
-              <p className={classes.date}>{task.date}</p>
+              <p className={classes.date}>{task.due_date}</p>
             </div>
             <footer className={classes.actions}>
-              <Button color={"info"} onClick={() => editTaskHandler(index, task.title, task.description, task.date,
-                task.id, task.completed)}>Editar Tarea</Button>
+              <Button color={"info"} onClick={() => editTaskHandler(task.title, task.description, task.due_date,
+                task.id)}>Editar Tarea</Button>
               <Button color={"danger"} onClick={() => deleteTaskHandler(index)}>
                 Eliminar Tarea
               </Button>
@@ -88,7 +88,7 @@ function TasksList(props) {
               <EditTask
                 name={editingTask.name}
                 description={editingTask.description}
-                date={editingTask.date}
+                date={editingTask.due_date}
                 id={editingTask.id}
                 onConfirm={editViewHandler}
                 onCancel={cancelEditViewHandler}
