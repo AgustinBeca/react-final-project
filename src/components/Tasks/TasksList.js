@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 import classes from "./TasksList.module.css";
 
 import Card from "../UI/Card";
 import Button from "../UI/Button";
+import WarningModal from "../UI/WarningModal";
+import EditTask from "./EditTask";
 
 function TasksList(props) {
 
@@ -19,6 +21,11 @@ function TasksList(props) {
       title: '¿Seguro que quiere eliminar esta tarea?',
       message: 'La Tarea se eliminará de forma permanente',
       index: id
+
+  function changeTaskStatusHandler(index) {
+    props.changeStatus(index);
+  };
+
     });
   };
 
@@ -42,6 +49,7 @@ function TasksList(props) {
 
   function editViewHandler(taskName, taskDescription, taskDate, taskId) {
     props.editTask(taskName, taskDescription, taskDate, taskId);
+
     setEditingTask(null);
   };
 
@@ -54,7 +62,7 @@ function TasksList(props) {
       <ul>
         {props.tasks.map((task, index) => (
           <li key={task.id}>
-            <h3>{task.title}</h3>
+            <h3 className={classes.title}>{task.title}</h3>
             <p>{task.description}</p>
             <p className={classes.date}>{task.due_date}</p>
             {!task.completed ? (

@@ -15,15 +15,28 @@
   padding: 0.5rem;
 }
 
-.tasks li h3 {
+.title {
   color: #1e90ff;
 }
 
 .date {
   font-weight: bold;
+  color: #6392FF;
+}
+
+.pending {
+  font-weight: bold;
   color: #FFC90A;
 }
 
-.status {
-  color: darkgrey;
+.completed {
+  font-weight: bold;
+  color: #6AC12C;
+}
+
+.actions {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
