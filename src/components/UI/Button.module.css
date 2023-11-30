@@ -1,75 +1,67 @@
-.button {
-  font: inherit;
-  border: 1px solid #1e90ff;
-  background: #1e90ff;
-  color: white;
-  padding: 0.25rem 1rem;
-  cursor: pointer;
-}
+@import '../../style/variables.css';
 
-.button:hover,
-.button:active {
-  background: #56B4FF;
-  border-color: #56B4FF;
+.button {
+  color: white;
+  border-radius: 30px;
+  padding: 15px;
+  cursor: pointer;
 }
 
 .button:focus {
   outline: none;
 }
 
-.dangerButton {
-  font: inherit;
-  border: 1px solid #FF5630;
-  background: #FF5630;
-  color: white;
-  padding: 0.25rem 1rem;
-  cursor: pointer;
+.primary {
+  border: 1px solid var(--primary-color);
+  background: var(--primary-color);
 }
 
-.dangerButton:hover,
-.dangerButton:active {
-  background: #FF8B63;
-  border-color: #FF8B63;
+.primary:hover,
+.primary:active {
+  background: var(--light-primary-color);
+  border-color: var(--light-primary-color);
 }
 
-.dangerButton:focus {
-  outline: none;
+.danger {
+  border: 1px solid var(--danger-color);
+  background: var(--danger-color);
 }
 
-.successButton {
-  font: inherit;
-  border: 1px solid #6AC12C;
-  background: #6AC12C;
-  color: white;
-  padding: 0.25rem 1rem;
-  cursor: pointer;
+.danger:hover,
+.danger:active {
+  background: var(--light-danger-color);
+  border-color: var(--light-danger-color);
 }
 
-.successButton:hover,
-.successButton:active {
-  background: #97D95B;
-  border-color: #97D95B;
+.success {
+  border: 1px solid var(--success-color);
+  background: var(--success-color);
 }
 
-.successButton:focus {
-  outline: none;
+.success:hover,
+.success:active {
+  background: var(--light-success-color);
+  border-color: var(--light-success-color);
 }
 
-.warningButton {
-  font: inherit;
-  border: 1px solid #FFC90A;
-  background: #FFC90A;
-  color: white;
-  padding: 0.25rem 1rem;
-  cursor: pointer;
+.warning {
+  border: 1px solid var(--warning-color);
+  background: var(--warning-color);
 }
 
-.warningButton:hover,
-.warningButton:active {
-  background: #FFDA47;
-  border-color: #FFDA47;
+.warning:hover,
+.warning:active {
+  background: var(--light-warning-color);
+  border-color: var(--light-warning-color);
 }
 
-.warningButton:focus {
-  outline: none;
+.info {
+  border: 1px solid var(--dark-info-color);
+  background: var(--dark-info-color);
+}
+
+.info:hover,
+.info:active {
+  background: var(--light-info-color);
+  border-color: var(--light-info-color);
 }

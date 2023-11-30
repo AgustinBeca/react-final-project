@@ -4,7 +4,7 @@ import classes from "./EditTask.module.css";
 
 import Card from "../UI/Card";
 import Button from "../UI/Button";
-import ErrorModal from "../UI/ErrorModal";
+import Alert from "../UI/Alert";
 
 function EditTask(props) {
 
@@ -72,13 +72,13 @@ function EditTask(props) {
             <label htmlFor="taskDate">Fecha Vencimiento de su Tarea</label>
             <input id="taskDate" type="date" value={enteredTaskDate} onChange={taskDateHandler}></input>
             <footer className={classes.actions}>
-              <Button type="submit" color={"warning"} onClick={updateTaskHandler}>Actualizar Tarea</Button>
+              <Button type="submit" color={"info"} onClick={updateTaskHandler}>Actualizar Tarea</Button>
               <Button onClick={props.onCancel}>Cancelar</Button>
             </footer>
           </form>
         </div>
       </Card>
-      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
+      {error && <Alert title={error.title} message={error.message} onCancel={errorHandler} />}
     </>
   )
 };

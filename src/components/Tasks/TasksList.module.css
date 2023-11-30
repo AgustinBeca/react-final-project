@@ -1,3 +1,5 @@
+@import '../../style/variables.css';
+
 .tasks {
   margin: 2rem auto;
   width: 90%;
@@ -16,26 +18,37 @@
 }
 
 .title {
-  color: #1e90ff;
+  text-align: center;
+  color: var(--primary-color);
+  margin-top: 2%;
 }
 
-.date {
-  font-weight: bold;
-  color: #6392FF;
+.titleCompleted {
+  font-weight: lighter;
+}
+
+.details {
+  display: flex;
+  border-radius: 10px;
+  padding: 1%;
+  margin-bottom: 1%;
+  justify-content: space-between;
 }
 
 .pending {
   font-weight: bold;
-  color: #FFC90A;
 }
 
-.completed {
-  font-weight: bold;
-  color: #6AC12C;
+.description {
+  color: slategray;
+}
+
+.date {
+  color: var(--info-color);
 }
 
 .actions {
-  padding: 1rem;
+  padding: 1%;
   display: flex;
   justify-content: center;
   gap: 1rem;

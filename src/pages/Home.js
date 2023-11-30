@@ -1,8 +1,15 @@
 import React from "react";
-import appfirebase from "../Credenciales";
-import { getAuth, signOut } from "firebase/auth";
+
+import Header from "../components/Header/Header";
 import ToDo from "./ToDo";
 
+const Home = (props) => {
+  return (
+    <>
+      <Header userMail={props.correoUsuario} />
+      <ToDo />
+    </>
+  );
 const auth = getAuth(appfirebase);
 
 const Home = ({ correoUsuario }) => {

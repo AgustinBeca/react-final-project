@@ -1,3 +1,5 @@
+@import '../../style/variables.css';
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -10,7 +12,7 @@
 
 .modal {
   position: fixed;
-  top: 20vh;
+  top: 10vh;
   left: 10%;
   width: 80%;
   z-index: 100;
@@ -18,7 +20,7 @@
 }
 
 .header {
-  background: #1e90ff;
+  background: var(--primary-color);
   padding: 1rem;
 }
 
@@ -38,17 +40,18 @@
 }
 
 .modal input {
-  font: inherit;
-  display: block;
+  background-color: #cccccc40;
+  border-color: slategray;
+  border-radius: 30px;
   width: 100%;
-  border: 1px solid #ccc;
-  padding: 0.15rem;
-  margin-bottom: 0.5rem;
+  padding: 15px;
+  border-width: 0px;
+  margin-bottom: 20px;
 }
 
 .modal input:focus {
-  outline: none;
-  border-color: #1e90ff;
+  outline: 1px solid #1e90ff;
+  box-shadow: 0 0 10px #1e90ff;
 }
 
 .actions {
