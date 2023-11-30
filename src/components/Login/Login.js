@@ -3,11 +3,13 @@ import imagen from "../../images/Lovepik_com-611647791-Mobile phone product logi
 import imagenperfil from "../../images/profile.png";
 import appfirebase from "../../Credenciales";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
+import { useDatabase } from "../../Contexts/DbContext"
 
 const auth = getAuth(appfirebase);
 
 const Login = () => {
+    const db = useDatabase();
     const [registrando, setRegistrando] = useState(false);
 
     const functAutenticacion = async (e) => {
@@ -21,7 +23,6 @@ const Login = () => {
                 const htmlUsuario = e.target.username.value;
                 await createUserWithEmailAndPassword(auth, htmlCorreo, htmlContraseña);
                 var userUid = auth.currentUser.uid;
-                const db = getFirestore(appfirebase);
 
                 await setDoc(doc(db, "usuarios", userUid), {
                     correo: htmlCorreo,

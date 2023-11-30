@@ -29,7 +29,7 @@ function EditTask(props) {
         message: 'Por favor ingrese una Descripción para la Tarea'
       });
       return;
-    } else if (enteredTaskDate.trim().length === 0) {
+    } else if (enteredTaskDate === undefined) {
       setError({
         title: 'Fecha de Tarea Inválida',
         message: 'Por favor ingrese una Fecha para la Tarea'
@@ -37,7 +37,7 @@ function EditTask(props) {
       return;
     }
 
-    props.onConfirm(enteredTaskName, enteredTaskDescription, enteredTaskDate, props.index, props.id, props.status);
+    props.onConfirm(enteredTaskName, enteredTaskDescription, enteredTaskDate, props.id);
   };
 
   function taskNameHandler(event) {
@@ -52,7 +52,7 @@ function EditTask(props) {
     setEnteredTaskDate(event.target.value);
   };
 
-  function errorHandler() {
+  function errorHandler(){
     setError(null);
   };
 
