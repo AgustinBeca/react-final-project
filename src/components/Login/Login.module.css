@@ -1,0 +1,68 @@
+@import '../../style/variables.css';
+
+.parent {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.login {
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 90%;
+  max-width: 40rem;
+  text-align: center;
+}
+
+.profile {
+  border-radius: 50%;
+  height: 50%;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.input {
+  background-color: #cccccc40;
+  border-color: slategray;
+  border-radius: 30px;
+  width: 100%;
+  padding: 15px;
+  border-width: 0px;
+  margin-bottom: 20px;
+}
+
+.input:focus {
+  outline: 1px solid #1e90ff;
+  box-shadow: 0 0 10px #1e90ff;
+}
+
+.alternative {
+  margin-top: 5%;
+  padding: 1%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.message {
+  font-size: 20px;
+  color: slategray;
+  margin-top: 5%;
+}
+
+.changeButton {
+  background-color: #05297A;
+  border-radius: 30px;
+  padding: 8px;
+  border-width: 0px;
+  color: white;
+  font-size: 16px;
+}
+
+.image {
+  width: 100%;
+  height: 800px;
+  margin-top: 100px;
+}

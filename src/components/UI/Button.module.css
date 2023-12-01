@@ -1,0 +1,67 @@
+@import '../../style/variables.css';
+
+.button {
+  color: white;
+  border-radius: 30px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.primary {
+  border: 1px solid var(--primary-color);
+  background: var(--primary-color);
+}
+
+.primary:hover,
+.primary:active {
+  background: var(--light-primary-color);
+  border-color: var(--light-primary-color);
+}
+
+.danger {
+  border: 1px solid var(--danger-color);
+  background: var(--danger-color);
+}
+
+.danger:hover,
+.danger:active {
+  background: var(--light-danger-color);
+  border-color: var(--light-danger-color);
+}
+
+.success {
+  border: 1px solid var(--success-color);
+  background: var(--success-color);
+}
+
+.success:hover,
+.success:active {
+  background: var(--light-success-color);
+  border-color: var(--light-success-color);
+}
+
+.warning {
+  border: 1px solid var(--warning-color);
+  background: var(--warning-color);
+}
+
+.warning:hover,
+.warning:active {
+  background: var(--light-warning-color);
+  border-color: var(--light-warning-color);
+}
+
+.info {
+  border: 1px solid var(--dark-info-color);
+  background: var(--dark-info-color);
+}
+
+.info:hover,
+.info:active {
+  background: var(--light-info-color);
+  border-color: var(--light-info-color);
+}

@@ -1,0 +1,55 @@
+@import '../../style/variables.css';
+
+.tasks {
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 40rem;
+}
+
+.tasks ul {
+  list-style: none;
+  padding: 1rem;
+}
+
+.tasks li {
+  border: 1px solid #ccc;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+.title {
+  text-align: center;
+  color: var(--primary-color);
+  margin-top: 2%;
+}
+
+.titleCompleted {
+  font-weight: lighter;
+}
+
+.details {
+  display: flex;
+  border-radius: 10px;
+  padding: 1%;
+  margin-bottom: 1%;
+  justify-content: space-between;
+}
+
+.pending {
+  font-weight: bold;
+}
+
+.description {
+  color: slategray;
+}
+
+.date {
+  color: var(--info-color);
+}
+
+.actions {
+  padding: 1%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
