@@ -61,7 +61,7 @@ function TasksList(props) {
                 {task.title}
               </h3>
               <Button color={task.completed ? "success" : "warning"}
-                onClick={() => changeTaskStatusHandler(index)}>
+                onClick={() => changeTaskStatusHandler(task.id)}>
                 {task.completed ? "Completada" : "Pendiente"}
               </Button>
             </div>
@@ -72,7 +72,7 @@ function TasksList(props) {
             <footer className={classes.actions}>
               <Button color={"info"} onClick={() => editTaskHandler(task.title, task.description, task.due_date,
                 task.id)}>Editar Tarea</Button>
-              <Button color={"danger"} onClick={() => deleteTaskHandler(index)}>
+              <Button color={"danger"} onClick={() => deleteTaskHandler(task.id)}>
                 Eliminar Tarea
               </Button>
             </footer>
